@@ -8,8 +8,8 @@ export const TMDBAPI = createApi ({
   endpoints : (builder) => ({
    //getmovies
     getMovies : builder.query({
-        query : () => 'movie/popular/?page=$(page)&api_key=11ba1f6c5d3d2e1228d8e0a5d99ce10e '
-    })
+        query : () => 'movie/popular?page=${page}&api_key=11ba1f6c5d3d2e1228d8e0a5d99ce10e '
+    }),
   })
 })
 

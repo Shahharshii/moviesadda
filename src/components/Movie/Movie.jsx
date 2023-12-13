@@ -2,7 +2,7 @@ import React from 'react'
 import Star from "../Star"
 import { Link } from 'react-router-dom'
 
-const Movie = ({movie , index }) => {
+const Movie = () => {
   return (
   
     <div className=' h-[400px] w-[250px] flex flex-col justify-start items-center text-white '>
