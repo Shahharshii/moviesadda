@@ -18,6 +18,7 @@ function App() {
         <Route path = '/' element = {<Movies /> } />
         <Route path ='/genre' element= {<Genre />} />
         <Route path ='/MovieInformation' element= {<MovieInformation />} />
+         <Route path="/genre/:id" element={<Genre />}></Route>
       </Routes>
 
     </Router>
