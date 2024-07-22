@@ -1,5 +1,5 @@
 import React from "react";
-import Topbar from "../topbar/Topbar";
+import Topbar from "../TopBar/TopBar";
 import Movies from "../Movies/Movies";
 import { useGetGenresQuery } from "../services/Api";
 
