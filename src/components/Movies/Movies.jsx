@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useGetMoviesQuery } from "../services/Api";
-import Movielist from "../movielist/Movielist";
+import { useGetMoviesQuery } from "../Services/Api";
+import Movielist from "../MovieList/MovieList";
 import Pagination from "../Pagination/Pagination";
 
 const Movies = () => {

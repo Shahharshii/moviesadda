@@ -1,7 +1,7 @@
 import React from "react";
 import Topbar from "../TopBar/TopBar";
 import Movies from "../Movies/Movies";
-import { useGetGenresQuery } from "../services/Api";
+import { useGetGenresQuery } from "../Services/Api";
 
 const Genre = () => {
   const { data } = useGetGenresQuery();

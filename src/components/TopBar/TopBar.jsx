@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetGenresQuery } from "../services/Api";
+import { useGetGenresQuery } from "../Services/Api";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectGenre } from "../../Feature/currentgenre";

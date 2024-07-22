@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useGetMovieQuery } from "../services/Api";
+import { useGetMovieQuery } from "../Services/Api";
 import Star from "../Star";
 import { CiLocationArrow1 } from "react-icons/ci";
 import { RxTriangleRight } from "react-icons/rx";
