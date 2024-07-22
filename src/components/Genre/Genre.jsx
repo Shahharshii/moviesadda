@@ -1,17 +1,21 @@
-import React from 'react'
-import Movies from '../Movies/Movies'
-import TopBar from '../TopBar/TopBar'
+import React from "react";
+import Topbar from "../topbar/Topbar";
+import Movies from "../Movies/Movies";
+import { useGetGenresQuery } from "../services/Api";
 
 const Genre = () => {
+  const { data } = useGetGenresQuery();
+
   return (
-    <section className='text-white'>
-      {/* <TopBar /> */  }
-      <TopBar />
-       {/* <Movies/> */}
-         <Movies />
+    <div className="flex flex-col items-center justify-start">
+      <div className="h-[100px] w-full">
+        <Topbar />
+      </div>
+      <div className="w-full">
+        <Movies movie={data} />
+      </div>
+    </div>
+  );
+};
 
-    </section>
-  )
-}
-
-export default Genre
+export default Genre;

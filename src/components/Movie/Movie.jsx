@@ -1,25 +1,32 @@
-import React from 'react'
-import Star from "../Star"
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import Star from "../Star";
 
-const Movie = () => {
+const Movie = ({ movie, index }) => {
   return (
-  
-    <div className=' h-[400px] w-[250px] flex flex-col justify-start items-center text-white '>
-    <Link to = "/MovieInformation">
-      <div className='w-[200px]  rounded-2xl overflow-hidden'>
-      <img src="https://c8.alamy.com/comp/BKB5RX/titanic-year-1997-director-james-cameron-kate-winslet-leonardo-dicaprio-BKB5RX.jpg" alt="poster" className='w-full' />
+    <div className="grid place-content-center">
+      <div className="h-[450px] w-[250px]">
+        <div className="overflow-hidden rounded-2xl bg-contain">
+          <Link to={`/movie/${movie.id}`}>
+            <img
+              src={
+                movie.poster_path
+                  ? `http://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                  : "https://www.fillmurray.com/200/300"
+              }
+              alt={movie.title}
+            />
+          </Link>
+        </div>
+        <div className="h-auto">
+          <p className="balance mt-4 w-full overflow-hidden overflow-ellipsis whitespace-nowrap px-4 text-white">
+            {movie.title}
+          </p>
+          <Star starVote={movie.vote_average} />
+        </div>
       </div>
-      </Link>
-    
-        <h1 className="font-semibold  mt-3  w-[200px] whitespace-nowrap overflow-hidden overflow-ellipsis"> title title title title title title title tithle thi
-  </h1>
-<div className='mt-2'>
-<Star /> 
-</div>
-  
     </div>
-  )
-}
+  );
+};
 
-export default Movie
+export default Movie;

@@ -1,25 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+// import { IoMdSearch } from "react-icons/io";
+import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { searchMovie } from "../../Feature/currentgenre";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
-  return <div className="w-full px-7 py-5 text-white  flex justify-center bg-light-blue">
-    <div className=" w-[100%] max-w-[1700px] flex items-center justify-between ">
-    <Link to = "/"> 
-<p className="font-black text-2xl">MoviesAdda</p>
-</Link> 
-<div className=" relative hidden sm:block ">
-<input type ="text" placeholder="Enter a movie"
- className="bg-dark-Gray py-3 pl-4 pr-10 text-light-Gray border-none outline-none rounded-lg w-[200px] text-sm placeholder:text-sm" />
-{        }
-<FaSearch className="absolute right-3 top-[50%]  -translate-y-[50%]" />
- </div>
- <Link to = "/genre">
-<button className="py-3 px-5 bg-dark-Gray rounded-lg text-sm" >Select Genre</button>
-</Link>
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
 
+  const handleKeyPress = () => {
+    dispatch(searchMovie(query));
+  };
+
+  return (
+    <div className="w-full bg-light-blue px-7 py-5 text-white flex justify-center items-center">
+      <div className="w-full max-w-[1700px] lg:px-8 flex items-center justify-between gap-3">
+        {/* <img src="" alt="" srcset=" " /> */}
+        <Link to="/">
+          <p className="text-3xl text-white font-bold w-1/5">MoviesFinder</p>
+        </Link>
+        <div className="rounded-md px-3 py-2 w-3/12 bg-dark-gray hidden sm:flex">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="rounded-md w-full bg-dark-gray outline-none text-light-gray border-none"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <FaSearch
+            className="text-2xl text-light-gray justify-end items-end"
+            onClick={handleKeyPress}
+          />
+          {/* <IoMdSearch className="absolute right-2 top-1/2 hidden -translate-y-1/2 sm:block cursor-pointer" onClick={handleKeyPress} /> */}
+        </div>
+        <Link to={`/genre`} className="rounded-lg px-3 py-2 bg-dark-gray">
+          Select Genre
+        </Link>
+      </div>
     </div>
-     </div>
+  );
 };
 
 export default Navbar;

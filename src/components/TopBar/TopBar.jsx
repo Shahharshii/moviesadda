@@ -1,109 +1,45 @@
-import React from 'react'
-import { BiStar} from "react-icons/bi";
+import React from "react";
+import { useGetGenresQuery } from "../services/Api";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectGenre } from "../../Feature/currentgenre";
+import genreIcons from "../../assets/genres";
 
 const TopBar = () => {
-    
+  const { data, isFetching } = useGetGenresQuery();
+  const dispatch = useDispatch();
+  // const { genreName } = useSelector((state) => state.currentGenre);
+
+  console.log(data);
+
   return (
-    <div className='text-white  border flex gap-4 p-3 overflow-x-auto '>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-    <button className=' px-4 py-2 border-[1px] flex justify-center items-center gap-2 rounded-lg'>
-              <BiStar />
-              <p className=''>genre2</p>
-            </button>
-        
-        
-        
-        
-        
-        
-        
-
-
+    <div className="flex h-full w-full items-center overflow-x-scroll px-5">
+      {isFetching ||
+        data?.genres.map(({ name, id }) => (
+          <Link
+            key={id}
+            to={`/genre/${name}`}
+            value={id}
+            className="mr-2 grid place-content-center rounded-lg border px-2 py-2 text-white"
+          >
+            <div
+              className="flex items-center justify-center"
+              onClick={() => dispatch(selectGenre(id))}
+            >
+              <div className="mr-2">
+                <img
+                  src={genreIcons[name.toLowerCase()]}
+                  width={30}
+                  height={30}
+                  className="mr-5 text-white invert"
+                />
+              </div>
+              <p className="whitespace-nowrap">{name}</p>
+            </div>
+          </Link>
+        ))}
     </div>
-  )
-}
+  );
+};
 
-export default TopBar
+export default TopBar;
