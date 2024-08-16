@@ -20,21 +20,21 @@ const Navbar = () => {
         <Link to="/">
           <p className="text-3xl text-white font-bold w-1/5">MoviesFinder</p>
         </Link>
-        <div className="rounded-md px-3 py-2 w-3/12 bg-dark-gray hidden sm:flex">
+        <div className="rounded-md px-3 py-2 w-3/12 bg-gray-800 hidden sm:flex">
           <input
             type="text"
             placeholder="Search..."
-            className="rounded-md w-full bg-dark-gray outline-none text-light-gray border-none"
+            className="rounded-md w-full pl-3 bg-gray-800 outline-none text-white border-none"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <FaSearch
-            className="text-2xl text-light-gray justify-end items-end"
+            className="text-2xl text-light-Gray justify-end items-end "
             onClick={handleKeyPress}
           />
           {/* <IoMdSearch className="absolute right-2 top-1/2 hidden -translate-y-1/2 sm:block cursor-pointer" onClick={handleKeyPress} /> */}
         </div>
-        <Link to={`/genre`} className="rounded-lg px-3 py-2 bg-dark-gray">
+        <Link to={`/genre`} className="rounded-lg px-3 py-2 bg-gray-800">
           Select Genre
         </Link>
       </div>
